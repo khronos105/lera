@@ -329,13 +329,13 @@ $(function() {
   /*===============================================
     Smooth Scrollin on links
   ===============================================*/
-  var htmlBody = $("html,body");
+  /*var htmlBody = $("html,body");
   var ssBtn = $(".scrolldown-btn, .scrolldown, .navbar a");
 
   ssBtn.on("click", function(e) {
     htmlBody.animate({scrollTop: $(this.hash).offset().top}, 700, "easeInOutQuart");
     e.preventDefault();
-  });
+  });*/
 
 
   /*===============================================
@@ -361,27 +361,29 @@ $(function() {
     htmlBody.animate({scrollTop : 0}, 600, "easeInOutQuart");
     return false;
   });
-  
+
 
   /*===============================================
     Portfolio
   ===============================================*/
-  $(".portfolio-wrapper").imagesLoaded(function() {
-    var $portfolioWrapper = $(".portfolio-wrapper").isotope({
-      itemSelector: ".portfolio-item",
-      transitionDuration: 300 // 0.3 second
-    });
-    var filter = $(".filter ul li");
+  function initPortfolio(){
+    $(".portfolio-wrapper").imagesLoaded(function() {
+      var $portfolioWrapper = $(".portfolio-wrapper").isotope({
+        itemSelector: ".portfolio-item",
+        transitionDuration: 300 // 0.3 second
+      });
+      var filter = $(".filter ul li");
 
-    // Portfolio Filter //
-    filter.on("click", function() {
-      var filterValue = $(this).attr("data-filter");
-      $portfolioWrapper.isotope({ filter: filterValue });
+      // Portfolio Filter //
+      filter.on("click", function() {
+        var filterValue = $(this).attr("data-filter");
+        $portfolioWrapper.isotope({ filter: filterValue });
 
-      filter.removeClass("active");
-      $(this).addClass("active");
+        filter.removeClass("active");
+        $(this).addClass("active");
+      });
     });
-  });
+  }
 
 
   /*===============================================
@@ -393,11 +395,11 @@ $(function() {
     var $defaults = {
       rewind: true,
       navText: ["<i class='ti-angle-left'></i>","<i class='ti-angle-right'></i>"],
-      autoHeight: true, 
-      autoplayTimeout: 4000, 
-      autoplaySpeed: 400, 
-      autoplayHoverPause: true, 
-      navSpeed: 350, 
+      autoHeight: true,
+      autoplayTimeout: 4000,
+      autoplaySpeed: 400,
+      autoplayHoverPause: true,
+      navSpeed: 350,
       dotsSpeed: 350
     }
 
@@ -464,7 +466,7 @@ $(function() {
       itemSelector: '.masonry-item'
     });
   });
-  
+
 
   /*===============================================
     Magnific Popup
@@ -477,7 +479,7 @@ $(function() {
       type: 'image',
       fixedContentPos: false,
       removalDelay: 200,
-      closeOnContentClick: true, 
+      closeOnContentClick: true,
       image: {
         titleSrc: 'data-image-title'
       }
@@ -625,13 +627,13 @@ $(function() {
     if ($this.parents(".accordion").find("li").hasClass("active")) {
       var accordionActiveContent = $this.parents(".accordion").find("li.active").children(".accordion-content");
       var accordionHeight = accordionActiveContent.prop("scrollHeight");
-      
+
       accordionActiveContent.css({'max-height': accordionHeight + "px"});
     }
 
   });
 
-  
+
   /*===============================================
     Counter
   ===============================================*/
@@ -648,7 +650,7 @@ $(function() {
           }
       });
     });
-    
+
   },{accX: 0, accY: -10});
 
 
@@ -702,7 +704,7 @@ $(function() {
 
   createAccountToggle.on("click", function() {
     var c = $(".create-account-box");
-    
+
     if (createAccountToggle.is(":checked")) {
       c.addClass("create-account-box-show");
     }
@@ -737,7 +739,7 @@ $(function() {
         }
       });
     });
-    
+
   },{accX: 0, accY: -10});
 
 
@@ -818,4 +820,11 @@ $(function() {
     e.preventDefault();
   });
 
+  initPortfolio();
+
+  $('.nav-link').click(function () {
+    initPortfolio();
+  })
+
 });
+

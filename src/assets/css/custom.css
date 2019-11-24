@@ -1,0 +1,9 @@
+.prices-box .price h1:before, .prices-box .price h2:before, .prices-box .price h3:before, .prices-box .price h4:before, .prices-box .price h5:before, .prices-box .price h6:before {
+  content: '€';
+  font-family: "Open Sans", sans-serif;
+  position: absolute;
+  top: 10px;
+  left: -15px;
+  font-size: 14px;
+  line-height: 14px;
+}
