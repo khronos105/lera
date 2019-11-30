@@ -1,3 +1,10 @@
+<style>
+  input.invalid,
+  textarea.invalid{
+    border-bottom: 1px solid #dc3545;
+  }
+</style>
+
 <!-- Page header -->
 <div class="section-xl bg-image parallax" style="background-image: url(../../assets/images/background.jpg)">
   <div class="bg-white-06">
@@ -35,27 +42,75 @@
         </div>
         <div class="margin-bottom-30">
           <h6 class="font-weight-normal margin-0">Email:</h6>
-          <p>contact@email.com</p>
+          <p>contact@valeriasafonova.com</p>
         </div>
         <div>
           <h6 class="font-weight-normal margin-0">Address:</h6>
-          <p>121 King St, Melbourne VIC 3000</p>
+          <p>Chisinau</p>
         </div>
       </div>
       <div class="col-12 col-md-8">
-        <div class="contact-form text-md-right">
-          <form method="post" id="contactform">
+        <div class="contact-form">
+          <form [formGroup]="form" (ngSubmit)="sendEmail()" class="form-style-3">
             <div class="form-row">
               <div class="col-12 col-sm-6">
-                <input type="text" id="name" name="name" placeholder="Name" required>
+                <input
+                  formControlName="name"
+                  type="text"
+                  placeholder="Name"
+                  required
+                  [className]="name.touched && name.invalid ? 'invalid' : ''"
+                >
               </div>
               <div class="col-12 col-sm-6">
-                <input type="email" id="email" name="email" placeholder="E-Mail" required>
+                <input
+                  formControlName="email"
+                  type="email"
+                  placeholder="E-Mail"
+                  required
+                  [className]="email.touched && email.invalid ? 'invalid' : ''"
+                >
               </div>
             </div>
-            <input type="text" id="subject" name="subject" placeholder="Subject" required>
-            <textarea name="message" id="message" placeholder="Message"></textarea>
-            <button class="button button-lg button-border-1px button-outline-dark-2" type="submit">Send Message</button>
+            <input
+              formControlName="subject"
+              type="text"
+              placeholder="Subject"
+              required
+              [className]="subject.touched && subject.invalid ? 'invalid' : ''"
+            >
+            <textarea
+              formControlName="message"
+              placeholder="Message"
+              [className]="message.touched && message.invalid ? 'invalid' : ''"
+            >
+            </textarea>
+            <div class="error_messages">
+              <div *ngIf="name.touched && name.invalid" class="user_messages">
+                <div class="alert alert-danger" *ngIf="name.errors.required">User is required</div>
+                <div class="alert alert-danger" *ngIf="name.errors.minlength">User should be minimum {{ name.errors.minlength.requiredLength }} characters</div>
+                <div class="alert alert-danger" *ngIf="name.errors.maxlength">User should be maximum {{ name.errors.maxlength.requiredLength }} characters</div>
+              </div>
+              <div *ngIf="email.touched && email.invalid" class="email_messages">
+                <div class="alert alert-danger" *ngIf="email.errors.required">Email is required</div>
+                <div class="alert alert-danger" *ngIf="email.errors.email">Email is not valid</div>
+                <div class="alert alert-danger" *ngIf="email.errors.minlength">Email should be inimum {{ email.errors.minlength.requiredLength }} characters</div>
+                <div class="alert alert-danger" *ngIf="email.errors.maxlength">Email should be maximum {{ email.errors.maxlength.requiredLength }} characters</div>
+              </div>
+              <div *ngIf="subject.touched && subject.invalid" class="subject_messages">
+                <div class="alert alert-danger" *ngIf="subject.errors.required">Subject is required</div>
+                <div class="alert alert-danger" *ngIf="subject.errors.minlength">Subject should be inimum {{ subject.errors.minlength.requiredLength }} characters</div>
+                <div class="alert alert-danger" *ngIf="subject.errors.maxlength">Subject should be maximum {{ subject.errors.maxlength.requiredLength }} characters</div>
+              </div>
+              <div *ngIf="message.touched && message.invalid" class="subject_messages">
+                <div class="alert alert-danger" *ngIf="message.errors.required">Message is required</div>
+                <div class="alert alert-danger" *ngIf="message.errors.minlength">Message should be inimum {{ message.errors.minlength.requiredLength }} characters</div>
+                <div class="alert alert-danger" *ngIf="message.errors.maxlength">Message should be maximum {{ message.errors.maxlength.requiredLength }} characters</div>
+              </div>
+            </div>
+            <div class="text-md-right">
+              <button class="button button-lg button-border-1px button-outline-dark-2" type="submit">Send Message</button>
+            </div>
           </form>
           <!-- Submit result -->
           <div class="submit-result">
