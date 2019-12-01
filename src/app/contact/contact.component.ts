@@ -92,6 +92,7 @@ export class ContactComponent implements OnInit {
           this.loading = false;
           if (response === 1) {
             this.emailStatus = true;
+            this.form.reset();
           } else {
             this.emailStatus = false;
           }
