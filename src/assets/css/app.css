@@ -7244,7 +7244,6 @@ i {
 }
 
 .submit-result span {
-  display: none;
   -webkit-transition: ease-out 0.2s;
   transition: ease-out 0.2s;
 }

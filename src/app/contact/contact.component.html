@@ -3,6 +3,13 @@
   textarea.invalid{
     border-bottom: 1px solid #dc3545;
   }
+  .loading-img{
+    width: 30px;
+    margin-right: 15px;
+  }
+  .submit-result>span{
+    position: absolute;
+  }
 </style>
 
 <!-- Page header -->
@@ -108,15 +115,16 @@
                 <div class="alert alert-danger" *ngIf="message.errors.maxlength">Message should be maximum {{ message.errors.maxlength.requiredLength }} characters</div>
               </div>
             </div>
+            <!-- Submit result -->
+            <div class="submit-result">
+              <span *ngIf="emailStatus === true" class="text-success">Thank you! Your Message has been sent.</span>
+              <span *ngIf="emailStatus === false" class="text-danger">Something went wrong, Please try again!</span>
+            </div>
             <div class="text-md-right">
+              <img *ngIf="loading" class="loading-img" src="/assets/images/loading.gif" alt="Loading...">
               <button class="button button-lg button-border-1px button-outline-dark-2" type="submit">Send Message</button>
             </div>
           </form>
-          <!-- Submit result -->
-          <div class="submit-result">
-            <span id="success">Thank you! Your Message has been sent.</span>
-            <span id="error">Something went wrong, Please try again!</span>
-          </div>
         </div>
       </div>
     </div><!-- end row -->
