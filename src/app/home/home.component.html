@@ -19,114 +19,30 @@
 <!-- Portfolio section -->
 <div class="section bg-grey">
   <div class="container">
-    <!-- Portfolio filter -->
-    <div class="filter filter-style-4">
-      <ul>
-        <li class="active" data-filter="*">All</li>
-        <li data-filter=".category-1">First</li>
-        <li data-filter=".category-2">Second</li>
-        <li data-filter=".category-3">Third</li>
-      </ul>
-    </div>
     <!-- end Portfolio filter -->
     <div class="portfolio-wrapper column-3 spacing-10 hover-style-1"><!-- 'column-1' to 'column-6' -->
       <!-- Portfolio box 1 -->
-      <div class="portfolio-item category-1">
+      <div *ngFor="let item of images;" class="portfolio-item category-1">
         <div class="portfolio-box">
           <div class="portfolio-img">
-            <img src="../assets/images/col-3-square.jpg" alt=""><!-- Image source -->
+            <img src="../assets/images/gallery/{{item}}.jpg" alt=""><!-- Image source -->
           </div>
-          <a class="lightbox-image" href="https://ichef.bbci.co.uk/news/660/cpsprodpb/7D66/production/_105120123_gettyimages-831502910.jpg" data-image-title="Image Title"></a><!-- Portfolio Single link -->
+          <a class="lightbox-image" href="../assets/images/gallery/{{item}}.jpg" data-image-title="Image Title"></a><!-- Portfolio Single link -->
           <div class="portfolio-title">
             <div>
               <h5 class="font-weight-normal margin-0">Project Title</h5>
-              <span class="font-small">category</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Portfolio box 2 -->
-      <div class="portfolio-item category-2">
-        <div class="portfolio-box">
-          <div class="portfolio-img">
-            <img src="../assets/images/col-3.jpg" alt=""><!-- Image source -->
-          </div>
-          <a href="#"></a><!-- Portfolio Single link -->
-          <div class="portfolio-title">
-            <div>
-              <h5 class="font-weight-normal margin-0">Project Title</h5>
-              <span class="font-small">category</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Portfolio box 3 -->
-      <div class="portfolio-item category-3">
-        <div class="portfolio-box">
-          <div class="portfolio-img">
-            <img src="../assets/images/col-3-square.jpg" alt=""><!-- Image source -->
-          </div>
-          <a href="#"></a><!-- Portfolio Single link -->
-          <div class="portfolio-title">
-            <div>
-              <h5 class="font-weight-normal margin-0">Project Title</h5>
-              <span class="font-small">category</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Portfolio box 4 -->
-      <div class="portfolio-item category-1">
-        <div class="portfolio-box">
-          <div class="portfolio-img">
-            <img src="../assets/images/col-3-square.jpg" alt=""><!-- Image source -->
-          </div>
-          <a href="#"></a><!-- Portfolio Single link -->
-          <div class="portfolio-title">
-            <div>
-              <h5 class="font-weight-normal margin-0">Project Title</h5>
-              <span class="font-small">category</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Portfolio box 5 -->
-      <div class="portfolio-item category-2">
-        <div class="portfolio-box">
-          <div class="portfolio-img">
-            <img src="../assets/images/col-3.jpg" alt=""><!-- Image source -->
-          </div>
-          <a href="#"></a><!-- Portfolio Single link -->
-          <div class="portfolio-title">
-            <div>
-              <h5 class="font-weight-normal margin-0">Project Title</h5>
-              <span class="font-small">category</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Portfolio box 6 -->
-      <div class="portfolio-item category-3">
-        <div class="portfolio-box">
-          <div class="portfolio-img">
-            <img src="../assets/images/col-3.jpg" alt=""><!-- Image source -->
-          </div>
-          <a href="#"></a><!-- Portfolio Single link -->
-          <div class="portfolio-title">
-            <div>
-              <h5 class="font-weight-normal margin-0">Project Title</h5>
-              <span class="font-small">category</span>
             </div>
           </div>
         </div>
       </div>
     </div><!-- end portfolio-wrapper-->
-    <!-- button -->
-    <div class="margin-top-60 text-right">
+
+    <!-- LOAD MORE button -->
+    <!--div class="margin-top-60 text-right">
       <button class="button button-lg button-border-1px">
         <span>Load More</span>
       </button>
     </div>
-  </div><!-- end container -->
-</div>
-<!-- end Portfolio section -->
+  </div--><!-- end container -->
+  </div>
+  <!-- end Portfolio section -->
